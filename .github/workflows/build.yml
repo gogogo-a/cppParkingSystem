@@ -21,9 +21,10 @@ jobs:
 
     - name: Compile Parking System
       run: |
-        g++ -o ParkingSystem.exe main.cpp car.cpp user.cpp admin.cpp -I. -std=c++11 -static
+        g++ -o ParkingSystem.exe main.cpp car.cpp user.cpp admin.cpp -I. -std=c++11 -static -Wall
 
     - name: Upload Artifact
+      if: always()
       uses: actions/upload-artifact@v4
       with:
         name: ParkingSystem-Windows
