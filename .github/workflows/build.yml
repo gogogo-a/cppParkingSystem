@@ -14,13 +14,15 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Setup GCC
-      uses: fortran-lang/setup-cpp@v1
+    - name: Setup MSYS2
+      uses: msys2/setup-msys2@v2
       with:
-        compiler: gcc
-        version: 11
+        update: true
+        install: >-
+          mingw-w64-x86_64-gcc
 
     - name: Compile Parking System
+      shell: msys2 {0}
       run: |
         g++ -o ParkingSystem.exe main.cpp car.cpp user.cpp admin.cpp -I. -std=c++11 -static -Wall
 
